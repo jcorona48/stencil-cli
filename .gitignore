@@ -5,3 +5,5 @@ node_modules
 npm-debug.log
 .DS_Store
 .coverage/
+config.stencil.json
+secrets.stencil.json

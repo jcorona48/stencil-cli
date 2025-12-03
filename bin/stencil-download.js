@@ -11,8 +11,10 @@ program
     .option('-f, --file [filename]', 'specify the filename to download only')
     .option('-e, --exclude [exclude]', 'specify a directory to exclude from download')
     .option('-c, --channel_id [channelId]', 'specify the channel ID of the storefront', parseInt)
-    .option('-o, --overwrite', 'overwrite local with remote files');
+    .option('-o, --overwrite', 'overwrite local with remote files')
+    .option('-t, --theme_id [themeId]', 'specify the theme ID to download');
 const cliOptions = prepareCommand(program);
+console.log('Downloading theme files from remote'.cyan);
 const extraExclude = cliOptions.exclude ? [cliOptions.exclude] : [];
 const options = {
     exclude: ['parsed', 'manifest.json', ...extraExclude],
@@ -21,6 +23,7 @@ const options = {
     overwrite: cliOptions.overwrite,
     applyTheme: true,
     file: cliOptions.file,
+    themeId: cliOptions.theme_id,
 };
 async function run(opts) {
     const overwriteType = opts.file ? opts.file : 'files';
